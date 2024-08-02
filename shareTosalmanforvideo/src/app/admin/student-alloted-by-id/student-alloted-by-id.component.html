@@ -1,0 +1,78 @@
+<div class="card glass-card text-center mt-5" style="margin-left: auto; margin-right: auto;">
+    <div class="d-flex justify-content-between p-3">
+      <button class="btn btn-back" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <button class="btn btn-edit" (click)="edit(data?.id)">
+        <i class="fas fa-edit"></i> Edit
+      </button>
+    </div>
+    <div *ngIf="data; else noData" class="card-body">
+      <h5 class="card-title text-white ">{{data?.student?.fullName || 'N/A' |uppercase}}</h5>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card-text">
+            <i class="fas fa-id-badge"></i> <strong>Enrolment No:</strong> {{data?.student?.enrolmentNo || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-calendar"></i> <strong>DOB:</strong> {{data?.student?.dob ? (data.student.dob | date: 'longDate') : 'Not Provided'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-mobile-alt"></i> <strong>Mobile No:</strong> {{data?.student?.mobileNo || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-envelope"></i> <strong>Email:</strong> {{data?.student?.email || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-id-card"></i> <strong>Adhar No:</strong> {{data?.student?.adharNo || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-user"></i> <strong>Father's Name:</strong> {{data?.student?.fatherName || 'N/A'}}
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card-text">
+            <i class="fas fa-home"></i> <strong>Present Address:</strong> {{data?.student?.presentAddress || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-city"></i> <strong>Present City:</strong> {{data?.student?.presentCity || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-map-marker-alt"></i> <strong>Present State:</strong> {{data?.student?.presentState || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-mail-bulk"></i> <strong>Present Pin:</strong> {{data?.student?.presentPin || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-user-graduate"></i> <strong>Academic Start Year:</strong> {{data?.student?.academicStartYear || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-user-graduate"></i> <strong>Academic End Year:</strong> {{data?.student?.academicEndYear || 'N/A'}}
+          </div>
+        </div>
+      </div>
+  
+      <h5 class="card-title text-white mt-4">Batch Information</h5>
+      <div class="card-text">
+        <i class="fas fa-book"></i> <strong>Course Name:</strong> {{data?.batchAllotment?.subject?.courseName || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-calendar-alt"></i> <strong>Start Date:</strong> {{data?.batchAllotment?.startDate ? (data.batchAllotment.startDate | date: 'longDate') : 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-calendar-alt"></i> <strong>End Date:</strong> {{data?.batchAllotment?.endDate ? (data.batchAllotment.endDate | date: 'longDate') : 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-chalkboard-teacher"></i> <strong>Teacher Name:</strong> {{data?.batchAllotment?.teacher?.firstName}} {{data?.batchAllotment?.teacher?.lastName}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-user-check"></i> <strong>Status:</strong> <span class="status-text">{{data?.batchAllotment?.teacher?.deleted ? 'Inactive' : 'Active'}}</span>
+      </div>
+    </div>
+    <ng-template #noData>
+      <p class="text-white">No data available for the specified student allotment ID.</p>
+    </ng-template>
+  </div>
+  

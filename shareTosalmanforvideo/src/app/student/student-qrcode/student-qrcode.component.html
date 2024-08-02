@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-end me-3 mt-2" (click)="back()">
+  <button>back</button>
+</div>
+<div
+  style="
+    background-color: #1a2b39;
+    width: 330px;
+    border-radius: 10px;
+    height: 380px;
+    margin-left: 240px;
+  "
+>
+  <h1 class="text-center text-white">Attendance Qr Code</h1>
+  <div class="card-body d-flex justify-content-center">
+    <qrcode [width]="300" qrdata="{{ date }}"> </qrcode>
+  </div>
+</div>

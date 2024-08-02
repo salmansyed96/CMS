@@ -1,0 +1,29 @@
+<!-- Loader element -->
+<div class="loader" *ngIf="isLoading"></div>
+
+<!-- Page content -->
+<div class="local-spacer container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-secondary shadow border-0 mt-2">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="d-flex justify-content-end" (click)="logout()">
+            <button class="btn btn-sm text-white border" style="background-color: #1a2b39;">logout</button>
+          </div>
+          <div class="container mt-5">
+            <h1 class="text-center">
+              <i class="text-white">
+                I'm pleased to inform you that your onboarding information has been submitted and is currently undergoing review by the Neural Bridge AI Authority. Once your account is activated, you will be able to use your account. Thank you for your patience.
+                <br>
+                Please click on the "Download PDF" button to download your onboarding document. Print the PDF and attach hard copies of the documents you provided during the onboarding process. Submit these documents in the office.
+                <div (click)="downloadPdf()">
+                  <button class="btn btn-md text-white" style="background-color: #1a2b39;">Download Pdf</button>
+                </div>
+              </i>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

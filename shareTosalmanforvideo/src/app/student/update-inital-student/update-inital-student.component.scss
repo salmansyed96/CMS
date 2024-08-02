@@ -1,0 +1,78 @@
+.fullscreen-background {
+    background: #1b2a39 url(../../../assets/hkhjk4.47.08_6c0775fe.jpg) center center/cover no-repeat;
+}
+
+
+.card {
+    // box-shadow: 2px 2px 14px 0px #000000;
+    border-radius: 10px;
+    padding: 20px;
+    // background-color: #fff;
+    // border: none;
+    margin-bottom: 2%;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(30x);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+}
+.form-control:disabled {
+    background-color: #a4acb4 !important;
+    opacity: 1;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('../../../assets/arrowdown.png'); /* Add path to your arrow icon */
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 12px;
+    // padding-left: 22px;
+  }// 
+  
+
+.card-title {
+    color:#ffffff;
+    font-size: x-large;
+    margin-bottom: 1.5rem;
+}
+
+
+.form-label {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: large;
+    margin-bottom: 0%;
+    margin-top: 3%;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+.text-danger {
+    font-size: 0.875em;
+}
+
+.btn-primary {
+    background-color: #1b2a39;;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    color: #1b2a39;
+    background-color: #ffffff;
+    font-weight:bold bold;
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        margin: 10px;
+    }
+}

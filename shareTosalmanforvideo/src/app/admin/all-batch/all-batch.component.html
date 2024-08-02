@@ -1,0 +1,55 @@
+<div class="mat-elevation-z8 mt-5 table-container">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Course Name Column -->
+    <ng-container matColumnDef="courseName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Course Name </th>
+      <td mat-cell *matCellDef="let element" data-label="Course Name"> {{element.subject.courseName}} </td>
+    </ng-container>
+
+    <!-- Teacher ID Column -->
+    <ng-container matColumnDef="teacherId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Teacher ID </th>
+      <td mat-cell *matCellDef="let element" data-label="Teacher ID"> {{element.teacher.teacherId}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let element" data-label="Email"> {{element.teacher.email}} </td>
+    </ng-container>
+
+    <!-- Start Date Column -->
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
+      <td mat-cell *matCellDef="let element" data-label="Start Date"> {{element.startDate}} </td>
+    </ng-container>
+
+    <!-- End Date Column -->
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> End Date </th>
+      <td mat-cell *matCellDef="let element" data-label="End Date"> {{element.endDate}} </td>
+    </ng-container>
+
+    <!-- Mobile Number Column -->
+    <ng-container matColumnDef="mobileNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </th>
+      <td mat-cell *matCellDef="let element" data-label="Mobile Number"> {{element.teacher.mobileNumber}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" data-label="Action">
+        <button mat-icon-button (click)="viewDetails(element.id)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator class="text-white" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

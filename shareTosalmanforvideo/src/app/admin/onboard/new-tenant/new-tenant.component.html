@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Signup Form</h5>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username">
+          <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="invalid-feedback">
+            Username is required.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="invalid-feedback">
+            Please enter a valid email.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+          <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="invalid-feedback">
+            Password must be at least 6 characters.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <select class="form-select" id="role" formControlName="role">
+            <option value="tenant">Tenant</option>
+            <option value="admin">Admin</option>
+            <!-- <option value="tenant">SuperAdmin</option> -->
+            <!-- Add other options if needed -->
+          </select>
+          <div *ngIf="signupForm.get('role')?.invalid && signupForm.get('role')?.touched" class="invalid-feedback">
+            Role is required.
+          </div>
+        </div>
+        <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+  

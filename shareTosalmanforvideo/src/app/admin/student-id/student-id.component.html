@@ -1,0 +1,114 @@
+<div class="container mt-3 mb-5">
+  <div class="card glass-card mx-auto">
+    <div class="d-flex justify-content-between p-3">
+      <button class="btn btn-back" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <button class="btn btn-edit" (click)="edit(studentData?.enrolmentNo)">
+        <i class="fas fa-edit"></i> Edit
+      </button>
+    </div>
+    <div *ngIf="studentData; else noData" class="card-body">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <img *ngIf="studentData.photoData" [src]="'data:image/jpeg;base64,' + studentData.photoData" alt="Student Photo" class="student-photo">
+          <div *ngIf="!studentData.photoData" class="student-photo-placeholder">No Image Available</div>
+        </div>
+        <div class="col-md-8">
+          <h5 class="card-title text-white">{{studentData?.fullName || 'N/A'}}</h5>
+          <div class="card-text">
+            <i class="fas fa-id-badge"></i> <strong>Enrolment No:</strong> {{studentData?.enrolmentNo || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-birthday-cake"></i> <strong>Date of Birth:</strong> {{studentData?.dob ? (studentData.dob | date: 'longDate') : 'Not Provided'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-mobile-alt"></i> <strong>Mobile:</strong> {{studentData?.mobileNo || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-id-card"></i> <strong>Aadhar No:</strong> {{studentData?.adharNo || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-envelope"></i> <strong>Email:</strong> {{studentData?.email || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-calendar-alt"></i> <strong>Academic Start Year:</strong> {{studentData?.academicStartYear || 'N/A'}}
+          </div>
+          <div class="card-text">
+            <i class="fas fa-calendar-alt"></i> <strong>Academic End Year:</strong> {{studentData?.academicEndYear || 'N/A'}}
+          </div>
+          <button class="btn btn-secondary mt-3" (click)="toggleShowOthers()">Others</button>
+          <div *ngIf="showOthers" class="others-section mt-3">
+            <div class="card-text">
+              <i class="fas fa-user"></i> <strong>Father's Name:</strong> {{studentData?.fatherName || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-briefcase"></i> <strong>Father's Occupation:</strong> {{studentData?.fatherOccupation || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-map-marker-alt"></i> <strong>Present Address:</strong> {{studentData?.presentAddress || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-map-marker-alt"></i> <strong>Permanent Address:</strong> {{studentData?.permanentAddress || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-user-tie"></i> <strong>Reference Name:</strong> {{studentData?.referenceName || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-user-tie"></i> <strong>Reference Occupation:</strong> {{studentData?.referenceOccupation || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-user-tie"></i> <strong>Reference Relationship:</strong> {{studentData?.referenceRelationship || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-map-marker-alt"></i> <strong>Reference Address:</strong> {{studentData?.referenceResidentialAddress || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-mobile-alt"></i> <strong>Reference Mobile No:</strong> {{studentData?.referenceMobileNo || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-calendar-alt"></i> <strong>Date:</strong> {{studentData?.date ? (studentData.date | date: 'longDate') : 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-home"></i> <strong>Residence Place:</strong> {{studentData?.residencePlace || 'Not Provided'}}
+            </div>
+            <div class="card-text">
+              <i class="fas fa-image"></i> <strong>Photo Name:</strong> {{studentData?.photoName || 'Not Provided'}}
+            </div>
+            <h5 class="card-title mt-4 text-white">Education Details</h5>
+            <div *ngFor="let edu of studentData?.education">
+              <div class="card-text">
+                <i class="fas fa-school"></i> <strong>Secondary School Name:</strong> {{edu.secondaryName || 'N/A'}}
+              </div>
+              <div class="card-text">
+                <i class="fas fa-graduation-cap"></i> <strong>Secondary Marks/Grade:</strong> {{edu.secondarymarksOrGrade || 'N/A'}}
+              </div>
+              <div class="card-text">
+                <i class="fas fa-calendar-alt"></i> <strong>Secondary Year:</strong> {{edu.secondaryyear || 'N/A'}}
+              </div>
+              <div class="card-text">
+                <i class="fas fa-university"></i> <strong>Secondary Board:</strong> {{edu.secondaryBoard || 'N/A'}}
+              </div>
+              <div class="card-text">
+                <i class="fas fa-university"></i> <strong>Latest Qualification:</strong> {{edu.latestQualification || 'N/A'}}
+              </div>
+              <div class="card-text">
+                <i class="fas fa-graduation-cap"></i> <strong>Latest Qualification Marks/Grade:</strong> {{edu.latestQualificationMarksAndGrade || 'N/A'}}
+              </div>
+              <div class="card-text">
+                <i class="fas fa-calendar-alt"></i> <strong>Latest Qualification Year:</strong> {{edu.latestQualificationYear || 'N/A'}}
+              </div>
+              <div class="card-text">
+                <i class="fas fa-university"></i> <strong>Latest Qualification Board:</strong> {{edu.latestQualificationBoard || 'N/A'}}
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noData>
+      <p class="text-white">No data available for the specified ID.</p>
+    </ng-template>
+  </div>
+</div>

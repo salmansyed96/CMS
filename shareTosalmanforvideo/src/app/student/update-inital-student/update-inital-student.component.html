@@ -1,0 +1,522 @@
+<div class="fullscreen-background">
+  <app-stinit-navbar></app-stinit-navbar>
+  <div class="container mt-5">
+    <div class="card">
+      <!-- <div class="card-title text-center">
+        <h1>Enrolment Form</h1>
+        <hr />
+      </div> -->
+      <div class="card-body">
+        <form [formGroup]="enrolmentForm" (ngSubmit)="onSubmit()" autocomplete="on">
+          <!-- Step 1: Personal Details -->
+          <div *ngIf="currentStep === 1">
+            <h1 class="text-white">Personal Details</h1>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="enrolmentNo" class="form-label">Enrolment No</label>
+                  <input type="text" id="enrolmentNo" formControlName="enrolmentNo" class="form-control" readonly />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fullName" class="form-label">Full Name</label>
+                  <input type="text" id="fullName" formControlName="fullName" class="form-control" readonly />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dob" class="form-label">Date of Birth</label>
+                  <input type="text" id="dob" formControlName="dob" class="form-control" readonly />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="mobileNo" class="form-label">Mobile No</label>
+                  <input type="text" id="mobileNo" formControlName="mobileNo" class="form-control" maxlength="10" />
+                  <div *ngIf="enrolmentForm.get('mobileNo')?.invalid && (enrolmentForm.get('mobileNo')?.dirty || enrolmentForm.get('mobileNo')?.touched)">
+                    <small class="text-danger" *ngIf="enrolmentForm.get('mobileNo')?.errors?.['required']">Mobile number is required.</small>
+                    <small class="text-danger" *ngIf="enrolmentForm.get('mobileNo')?.errors?.['pattern']">Invalid mobile number.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="adharNo" class="form-label">Adhar No</label>
+                  <input type="text" id="adharNo" formControlName="adharNo" class="form-control" readonly />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" formControlName="email" class="form-control" readonly />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <!-- <div class="col-md-6">
+                <div class="form-group">
+                  <label for="formFillOrNot" class="form-label">Form Fill or Not</label>
+                  <input type="text" id="formFillOrNot" formControlName="formFillOrNot" class="form-control" readonly />
+                </div>
+              </div> -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="photo" class="form-label">Photo</label>
+                  <input type="file" id="photo" (change)="onFileChange($event)" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fatherName" class="form-label">Father's Name</label>
+                  <input type="text" id="fatherName" formControlName="fatherName" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fatherNo" class="form-label">Father's Mobile No</label>
+                  <input type="text" id="fatherNo" formControlName="fatherNo" class="form-control" maxlength="10" />
+                  <div *ngIf="enrolmentForm.get('fatherNo')?.invalid && (enrolmentForm.get('fatherNo')?.dirty || enrolmentForm.get('fatherNo')?.touched)">
+                    <small class="text-danger" *ngIf="enrolmentForm.get('fatherNo')?.errors?.['required']">Father's mobile number is required.</small>
+                    <small class="text-danger" *ngIf="enrolmentForm.get('fatherNo')?.errors?.['pattern']">Invalid mobile number.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fatherOccupation" class="form-label">Father's Occupation</label>
+                  <input type="text" id="fatherOccupation" formControlName="fatherOccupation" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="presentAddress" class="form-label">Present Address</label>
+                  <input type="text" id="presentAddress" formControlName="presentAddress" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="presentState" class="form-label">Present State</label>
+                  <select id="presentState" formControlName="presentState" class="form-control" (change)="setCities($event)">
+                    <option *ngFor="let state of states" [value]="state.isoCode">{{ state.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="presentCity" class="form-label">Present City</label>
+                  <select id="presentCity" formControlName="presentCity" class="form-control">
+                    <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="presentPin" class="form-label">Present Pin</label>
+                  <input type="text" id="presentPin" formControlName="presentPin" class="form-control" maxlength="6" />
+                  <div *ngIf="enrolmentForm.get('presentPin')?.invalid && (enrolmentForm.get('presentPin')?.dirty || enrolmentForm.get('presentPin')?.touched)">
+                    <small class="text-danger" *ngIf="enrolmentForm.get('presentPin')?.errors?.['required']">Present Pin number is required.</small>
+                    <small class="text-danger" *ngIf="enrolmentForm.get('presentPin')?.errors?.['pattern']">Invalid Present Pin Number.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="permanentAddress" class="form-label">Permanent Address</label>
+                  <input type="text" id="permanentAddress" formControlName="permanentAddress" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="permanentState" class="form-label">Permanent State</label>
+                  <select id="permanentState" formControlName="permanentState" class="form-control" (change)="setPermanentCities($event)">
+                    <option *ngFor="let state of states" [value]="state.isoCode">{{ state.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="permanentCity" class="form-label">Permanent City</label>
+                  <select id="permanentCity" formControlName="permanentCity" class="form-control">
+                    <option *ngFor="let city of permanentCities" [value]="city.name">{{ city.name }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="permanentPin" class="form-label">Permanent Pin</label>
+                  <input type="text" id="permanentPin" formControlName="permanentPin" class="form-control" maxlength="6" />
+                  <div *ngIf="enrolmentForm.get('permanentPin')?.invalid && (enrolmentForm.get('permanentPin')?.dirty || enrolmentForm.get('permanentPin')?.touched)">
+                    <small class="text-danger" *ngIf="enrolmentForm.get('permanentPin')?.errors?.['required']">Permanent Pin number is required.</small>
+                    <small class="text-danger" *ngIf="enrolmentForm.get('permanentPin')?.errors?.['pattern']">Invalid Permanent Pin Number.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="religion" class="form-label">Religion</label>
+                  <select id="religion" formControlName="religion" class="form-control">
+                    <option value="Islam">Islam</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Sikh">Sikh</option>
+                    <option value="Buddhist">Buddhist</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="caste" class="form-label">Caste</label>
+                  <select id="caste" formControlName="caste" class="form-control">
+                    <option value="General">General</option>
+                    <option value="OBC">OBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="Sunni">Sunni</option>
+                    <option value="Shia">Shia</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="academicStartYear" class="form-label">Academic Start Year</label>
+                  <select id="academicStartYear" formControlName="academicStartYear" class="form-control">
+                    <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="academicEndYear" class="form-label">Academic End Year</label>
+                  <select id="academicEndYear" formControlName="academicEndYear" class="form-control">
+                    <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Reference Details -->
+          <div *ngIf="currentStep === 2">
+            <h1 class="text-white">Reference Details</h1>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="referenceName" class="form-label">Reference Name</label>
+                  <input type="text" id="referenceName" formControlName="referenceName" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="referenceOccupation" class="form-label">Reference Occupation</label>
+                  <input type="text" id="referenceOccupation" formControlName="referenceOccupation" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="referenceRelationship" class="form-label">Reference Relationship</label>
+                  <input type="text" id="referenceRelationship" formControlName="referenceRelationship" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="referenceResidentialAddress" class="form-label">Reference Residential Address</label>
+                  <input type="text" id="referenceResidentialAddress" formControlName="referenceResidentialAddress" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="referenceMobileNo" class="form-label">Reference Mobile No</label>
+                  <input type="text" id="referenceMobileNo" formControlName="referenceMobileNo" class="form-control" maxlength="10" />
+                  <div *ngIf="enrolmentForm.get('referenceMobileNo')?.invalid && (enrolmentForm.get('referenceMobileNo')?.dirty || enrolmentForm.get('referenceMobileNo')?.touched)">
+                    <small class="text-danger" *ngIf="enrolmentForm.get('referenceMobileNo')?.errors?.['required']">Reference mobile number is required.</small>
+                    <small class="text-danger" *ngIf="enrolmentForm.get('referenceMobileNo')?.errors?.['pattern']">Invalid mobile number.</small>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-md-6">
+                <div class="form-group">
+                  <label for="date" class="form-label">Date</label>
+                  <input type="date" id="date" formControlName="date" class="form-control" />
+                </div>
+              </div> -->
+            </div>
+            
+            <div class="text-center">
+              <button type="button" class="btn btn-secondary mt-3 me-3" (click)="previousStep()" style="background-color: #1a2b39;">Previous</button>
+              <button type="button" class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Education and Other Qualifications Details -->
+          <div *ngIf="currentStep === 3">
+            <h1 class="text-white">Education Details</h1>
+            <div formGroupName="education" class="border p-2 mb-2">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="secondaryName" class="form-label">Secondary School Name</label>
+                    <input type="text" id="secondaryName" formControlName="secondaryName" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="secondaryGradeType" class="form-label">Grade Type</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="secondaryGradeType" id="percentage" value="percentage" formControlName="secondaryGradeType">
+                      <label class="form-check-label" for="percentage">Percentage</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="secondaryGradeType" id="cgpa" value="cgpa" formControlName="secondaryGradeType">
+                      <label class="form-check-label" for="cgpa">CGPA</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="secondarymarksOrGrade" class="form-label">Secondary Marks/Grade</label>
+                    <input type="text" id="secondarymarksOrGrade" maxlength="3" formControlName="secondarymarksOrGrade" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="secondaryyear" class="form-label">Secondary Year</label>
+                    <select id="secondaryyear" formControlName="secondaryyear" class="form-control">
+                      <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="secondaryBoard" class="form-label">Secondary Board</label>
+                    <input type="text" id="secondaryBoard" formControlName="secondaryBoard" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="seniorSecondaryName" class="form-label">Senior Secondary School Name</label>
+                    <input type="text" id="seniorSecondaryName" formControlName="seniorSecondaryName" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="seniorSecondaryGradeType" class="form-label">Grade Type</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="seniorSecondaryGradeType" id="percentage" value="percentage" formControlName="seniorSecondaryGradeType">
+                      <label class="form-check-label" for="percentage">Percentage</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="seniorSecondaryGradeType" id="cgpa" value="cgpa" formControlName="seniorSecondaryGradeType">
+                      <label class="form-check-label" for="cgpa">CGPA</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="seniorSecondaryMarksOrGrade" class="form-label">Senior Secondary Marks/Grade</label>
+                    <input type="text" id="seniorSecondaryMarksOrGrade" maxlength="3"  formControlName="seniorSecondaryMarksOrGrade" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="seniorSecondaryYear" class="form-label">Senior Secondary Year</label>
+                    <select id="seniorSecondaryYear" formControlName="seniorSecondaryYear" class="form-control">
+                      <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="seniorSecondaryBoard" class="form-label">Senior Secondary Board</label>
+                    <input type="text" id="seniorSecondaryBoard" formControlName="seniorSecondaryBoard" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="graduationName" class="form-label">Graduation Course</label>
+                    <input type="text" id="graduationName" formControlName="graduationName" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="graduationGradeType" class="form-label">Grade Type</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="graduationGradeType" id="percentage" value="percentage" formControlName="graduationGradeType">
+                      <label class="form-check-label" for="percentage">Percentage</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="graduationGradeType" id="cgpa" value="cgpa" formControlName="graduationGradeType">
+                      <label class="form-check-label" for="cgpa">CGPA</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="graduationMarksOrGrade" class="form-label">Graduation Marks/Grade</label>
+                    <input type="text" maxlength="3" id="graduationMarksOrGrade" formControlName="graduationMarksOrGrade" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="graduationYear" class="form-label">Graduation Year</label>
+                    <select id="graduationYear" formControlName="graduationYear" class="form-control">
+                      <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="graduationBoard" class="form-label">Graduation Board</label>
+                    <input type="text" id="graduationBoard" formControlName="graduationBoard" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="postGraduationName" class="form-label">Post-Graduation Course</label>
+                    <input type="text" id="postGraduationName" formControlName="postGraduationName" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="postGraduationGradeType" class="form-label">Grade Type</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="postGraduationGradeType" id="percentage" value="percentage" formControlName="postGraduationGradeType">
+                      <label class="form-check-label" for="percentage">Percentage</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="postGraduationGradeType" id="cgpa" value="cgpa" formControlName="postGraduationGradeType">
+                      <label class="form-check-label" for="cgpa">CGPA</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="postGraduationMarksOrGrade" class="form-label">Post-Graduation Marks/Grade</label>
+                    <input type="text" maxlength="3" id="postGraduationMarksOrGrade" formControlName="postGraduationMarksOrGrade" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="postGraduationYear" class="form-label">Post-Graduation Year</label>
+                    <select id="postGraduationYear" formControlName="postGraduationYear" class="form-control">
+                      <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="postGraduationBoard" class="form-label">Post-Graduation Board</label>
+                    <input type="text" id="postGraduationBoard" formControlName="postGraduationBoard" class="form-control" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h1 class="text-white">Other Qualifications</h1>
+            <div formArrayName="otherQualifications" *ngFor="let qualification of otherQualifications.controls; let i=index">
+              <div [formGroupName]="i" class="border p-2 mb-2">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="othersName" class="form-label">Qualification Name</label>
+                      <input type="text" id="othersName" formControlName="othersName" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="othersMarksOrGrade" class="form-label">Marks/Grade</label>
+                      <input type="text" id="othersMarksOrGrade" maxlength="3" formControlName="othersMarksOrGrade" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <!-- <div class="form-group">
+                      <label for="othersYear" class="form-label">Year</label>
+                      <input type="text" id="othersYear" formControlName="othersYear" class="form-control" />
+                    </div> -->
+                    <div class="form-group">
+                      <label for="othersYear" class="form-label">Graduation Year</label>
+                      <select id="othersYear" formControlName="othersYear" class="form-control">
+                        <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="othersDocumentBoard" class="form-label">Document Board</label>
+                      <input type="text" id="othersDocumentBoard" formControlName="othersDocumentBoard" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right mt-3">
+                  <button type="button" class="btn text-white " style="background-color: #1a2b39;" (click)="removeOtherQualification(i)">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <button type="button" class="btn btn-secondary" style="background-color: #1a2b39;" (click)="addOtherQualification()">Add Qualification</button>
+              </div>
+             
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-secondary mt-3 me-3" (click)="previousStep()" style="background-color: #1a2b39;">Previous</button>
+              <button type="submit" class="btn text-white mt-3" style="background-color: #1a2b39;">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-stinit-footer></app-stinit-footer>
+</div>

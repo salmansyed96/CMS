@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <div class="card" style="width: 30rem; margin: auto">
+    <div class="card-body">
+      <h5 class="card-title text-center">Course Form</h5>
+      <hr style="height: 2px; background-color: #000; border: none" />
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="courseName" class="form-label">Course Name</label>
+          <input
+            type="text"
+            id="courseName"
+            class="form-control"
+            formControlName="courseName"
+          />
+          <div
+            *ngIf="
+              courseForm.get('courseName')?.touched &&
+              courseForm.get('courseName')?.invalid
+            "
+            class="text-danger"
+          >
+            Course Name is required
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

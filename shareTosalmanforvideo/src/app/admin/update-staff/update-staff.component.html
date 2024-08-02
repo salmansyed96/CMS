@@ -1,0 +1,40 @@
+<div class="container mt-4">
+    <div class="card glass-card p-4">
+      <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="teacherId" class="form-label">Teacher ID</label>
+          <input type="text" id="teacherId" class="form-control" formControlName="teacherId" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" id="firstName" class="form-control" formControlName="firstName">
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" id="lastName" class="form-control" formControlName="lastName">
+        </div>
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input type="date" id="dob" class="form-control" formControlName="dob">
+        </div>
+        <div class="mb-3">
+          <label for="mobileNumber" class="form-label">Mobile Number</label>
+          <input type="text"  maxlength="10" id="mobileNumber" class="form-control" formControlName="mobileNumber">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" formControlName="email">
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" id="address" class="form-control" formControlName="address">
+        </div>
+        <div class="form-check mb-3">
+          <input type="checkbox" id="deleted" class="form-check-input" formControlName="deleted">
+          <label for="deleted" class="form-check-label">Deleted</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+  </div>
+  

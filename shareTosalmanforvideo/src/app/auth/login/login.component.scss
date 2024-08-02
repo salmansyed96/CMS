@@ -1,0 +1,107 @@
+// .login-container {
+//     background-color: white;
+//     padding: 30px;
+//     border-radius: 10px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     max-width: 400px;
+//     width: 100%;
+// }
+// .login-title {
+//     text-align: center;
+//     margin-bottom: 20px;
+// }
+// .login-title h2 {
+//     color: #333;
+// }
+
+.morphism{
+  background: rgba( 255, 255, 255, 0.25 ) !important;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ) !important;
+  backdrop-filter: blur( 20px ) !important;
+  -webkit-backdrop-filter: blur( 20px ) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+}
+.morphismButton{
+  background: rgba(15, 15, 15, 0.12) !important;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ) !important;
+  backdrop-filter: blur( 20px ) !important;
+  -webkit-backdrop-filter: blur( 20px ) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto; /* Center horizontally */
+    box-shadow: 2px 2px 14px 0px #000000;
+  }
+  
+  .login-title h2 {
+    color: #333;
+    font-size: 1.8rem; /* Larger font for title */
+  }
+  
+  .form-group label {
+    display: block; /* Labels are block elements for better spacing */
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%; /* Input fields take up full width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px; /* Spacing between inputs */
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #007bff; /* Focus color change */
+  }
+  
+  .form-group .form-check-label {
+    font-weight: normal; /* Less bold for checkbox label */
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Style for forget password and register links */
+  .text-center a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .text-center a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Center the login container on the screen */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Optional: Apply additional styling for invalid inputs */
+  .form-group input.ng-invalid {
+    border-color: rgb(83, 158, 244); /* Show red border for invalid input */
+  }

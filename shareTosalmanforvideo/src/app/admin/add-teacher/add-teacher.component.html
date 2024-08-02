@@ -1,0 +1,62 @@
+<div class="loader" *ngIf="isLoading"></div> <!-- Loader element -->
+<div class="container mt-5">
+    <div class="card" style="width: 30rem; margin: auto;">
+      <div class="card-body">
+        <h5 class="card-title text-center">Add Teacher</h5>
+        <hr style="height: 2px; background-color: #000; border: none;"/>
+        <form [formGroup]="teacherForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" id="firstName" class="form-control" formControlName="firstName">
+            <div *ngIf="firstName!.touched && firstName!.invalid" class="text-danger">
+              <div *ngIf="firstName!.errors?.['required']">First Name is required</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" id="lastName" class="form-control" formControlName="lastName">
+            <div *ngIf="lastName!.touched && lastName!.invalid" class="text-danger">
+              <div *ngIf="lastName!.errors?.['required']">Last Name is required</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" id="dob" class="form-control" formControlName="dob" [max]="formattedDate">
+            <div *ngIf="dob!.touched && dob!.invalid" class="text-danger">
+              <div *ngIf="dob!.errors?.['required']">Date of Birth is required</div>
+              <div *ngIf="dob!.errors?.['ageInvalid']">Age must be at least 15 years</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mobileNumber" class="form-label">Mobile Number</label>
+            <input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber"  maxlength="10">
+            <div *ngIf="mobileNumber!.touched && mobileNumber!.invalid" class="text-danger">
+              <div *ngIf="mobileNumber!.errors?.['required']">Mobile Number is required</div>
+              <div *ngIf="mobileNumber!.errors?.['pattern']">Mobile Number must be 10 digits</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" (change)="verifyEmail(email)">
+            <div *ngIf="email!.touched && email!.invalid" class="text-danger">
+              <div *ngIf="email!.errors?.['required']">Valid Email is required</div>
+              <div *ngIf="email!.errors?.['email']">Email must be valid</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea id="address" class="form-control" formControlName="address"></textarea>
+            <div *ngIf="address!.touched && address!.invalid" class="text-danger">
+              Address is required
+            </div>
+          </div>
+          <!-- <div class="mb-3 form-check">
+            <input type="checkbox" id="isDeleted" class="form-check-input" formControlName="isDeleted">
+            <label for="isDeleted" class="form-check-label">Is Deleted</label>
+          </div> -->
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

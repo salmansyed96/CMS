@@ -1,0 +1,28 @@
+
+
+<nav id="menu">
+  <input type="checkbox" id="responsive-menu">
+  <label for="responsive-menu"></label>
+  <ul>
+    <li><a routerLink="/admin">Home</a></li>
+    <li><a routerLink="/admin/conatct-us">Contact Us</a></li>
+    <li (click)="logout()"><a>Logout</a></li>
+    <li>
+      <div class="bell-icon-container" (click)="toggleUserList()">
+        <i class="fas fa-bell text-white mt-3"></i>
+        <span class="badge mt-2" *ngIf="data?.length > 0">{{ data.length }}</span>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="user-list-container" [class.active]="showUserList">
+  <div class="d-flex justify-content-end" (click)="toggle()">
+   <h1 class="me-2 mt-2" >X</h1> 
+
+  </div>
+  <ul class="user-list">
+     <li *ngFor="let user of data" (click)="navigateToUpdate(user?.enrolmentNo)">{{ user?.fullName }} - {{user?.enrolmentNo}}   Waiting For the Approval</li>
+  </ul>
+</div>
+

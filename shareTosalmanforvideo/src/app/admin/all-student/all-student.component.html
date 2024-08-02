@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8 mt-5">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Taha">
+    </mat-form-field> -->
+  
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+      <!-- Enrolment No Column -->
+      <ng-container matColumnDef="enrolmentNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Enrolment No </th>
+        <td mat-cell *matCellDef="let element" (click)="navigateToById(element?.enrolmentNo)"> {{element.enrolmentNo}} </td>
+      </ng-container>
+  
+      <!-- Full Name Column -->
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
+        <td mat-cell *matCellDef="let element"> 
+          <!-- <img [src]="element.photoData" alt="Photo" width="50" height="50" style="margin-right: 10px;"> -->
+          {{element.fullName}} 
+        </td>
+      </ng-container>
+  
+      <!-- DOB Column -->
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+      </ng-container>
+  
+      <!-- Mobile No Column -->
+      <ng-container matColumnDef="mobileNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile No </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNo}} </td>
+      </ng-container>
+  
+      <!-- Aadhar No Column -->
+      <ng-container matColumnDef="aadharNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Aadhar No </th>
+        <td mat-cell *matCellDef="let element"> {{element.adharNo}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator class="text-white" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  

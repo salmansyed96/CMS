@@ -1,0 +1,247 @@
+<!-- <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+  <p class="fs-4" style="color: #007bff; padding-left: 25px; font-weight: 500">
+    Menu
+  </p>
+  <hr style="height: 2px; background-color: #000; border: none" />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item" (click)="navigateToTeacherForm()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> Add Teacher
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateToStudentForm()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> Add Student
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateToCourseForm()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> Add Course
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateToBatchAllotmentForm()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> Batch Allotment
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateToStudentAllotmentForm()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> Student Allotment
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateAllTeacher()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> All Teacher
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateAllStudent()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> All Student
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateAllSubject()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> All Course
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateAllBatch()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> All Batch
+      </a>
+    </li>
+    <li class="nav-item" (click)="navigateStudentAllotted()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person-plus"></i> Student Allotted
+      </a>
+    </li>
+  </ul>
+  <hr />
+</div> -->
+
+
+<!-- 
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+  <p class="fs-4" style="color: #007bff; padding-left: 25px; font-weight: 500">
+    Menu
+  </p>
+  <hr style="height: 2px; background-color: #000; border: none" />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item" (click)="toggleTeacherOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person"></i> Teacher
+      </a>
+    </li>
+    <div *ngIf="showTeacherOptions">
+      <li class="nav-item" (click)="navigateToTeacherForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Add Teacher
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllTeacher()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-lines-fill"></i> All Teacher
+        </a>
+      </li>
+    </div>
+
+    <li class="nav-item" (click)="toggleStudentOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person"></i> Student
+      </a>
+    </li>
+    <div *ngIf="showStudentOptions">
+      <li class="nav-item" (click)="navigateToStudentForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Add Student
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllStudent()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-lines-fill"></i> All Student
+        </a>
+      </li>
+    </div>
+
+    <li class="nav-item" (click)="toggleCourseOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-book"></i> Course
+      </a>
+    </li>
+    <div *ngIf="showCourseOptions">
+      <li class="nav-item" (click)="navigateToCourseForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Add Course
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllSubject()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-lines-fill"></i> All Course
+        </a>
+      </li>
+    </div>
+
+    <li class="nav-item" (click)="toggleBatchOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-box-seam"></i> Batch
+      </a>
+    </li>
+    <div *ngIf="showBatchOptions">
+      <li class="nav-item" (click)="navigateToBatchAllotmentForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Batch Allotment
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllBatch()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-lines-fill"></i> All Batch
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateStudentAllotted()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-lines-fill"></i> Student Allotted
+        </a>
+      </li>
+    </div>
+  </ul>
+  <hr />
+</div> -->
+
+
+<div class="d-flex flex-column flex-shrink-0 p-3 glass">
+  <p class="fs-4" style="color: #ffffff; padding-left: 25px; font-weight: 500">
+    Menu
+  </p>
+  <hr style="height: 2px; background-color: #2a2525; border: none" />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item" (click)="toggleTeacherOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person"></i> Teacher
+        <i class="bi bi-chevron-down ms-auto" *ngIf="!showTeacherOptions"></i>
+        <i class="bi bi-chevron-up ms-auto" *ngIf="showTeacherOptions"></i>
+      </a>
+    </li>
+    <div *ngIf="showTeacherOptions">
+      <li class="nav-item" (click)="navigateToTeacherForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Add Teacher
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllTeacher()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-people"></i> All Teacher
+        </a>
+      </li>
+    </div>
+
+    <li class="nav-item" (click)="toggleStudentOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-person"></i> Student
+        <i class="bi bi-chevron-down ms-auto" *ngIf="!showStudentOptions"></i>
+        <i class="bi bi-chevron-up ms-auto" *ngIf="showStudentOptions"></i>
+      </a>
+    </li>
+    <div *ngIf="showStudentOptions">
+      <li class="nav-item" (click)="navigateToStudentForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Add Student
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllStudent()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-people"></i> All Student
+        </a>
+      </li>
+    </div>
+
+    <li class="nav-item" (click)="toggleCourseOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-book"></i> Course
+        <i class="bi bi-chevron-down ms-auto" *ngIf="!showCourseOptions"></i>
+        <i class="bi bi-chevron-up ms-auto" *ngIf="showCourseOptions"></i>
+      </a>
+    </li>
+    <div *ngIf="showCourseOptions">
+      <li class="nav-item" (click)="navigateToCourseForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-bookmark-plus"></i> Add Course
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllSubject()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-journal"></i> All Course
+        </a>
+      </li>
+    </div>
+
+    <li class="nav-item" (click)="toggleBatchOptions()">
+      <a class="nav-link link-dark">
+        <i class="bi bi-box-seam"></i> Batch
+        <i class="bi bi-chevron-down ms-auto" *ngIf="!showBatchOptions"></i>
+        <i class="bi bi-chevron-up ms-auto" *ngIf="showBatchOptions"></i>
+      </a>
+    </li>
+    <div *ngIf="showBatchOptions">
+      <li class="nav-item" (click)="navigateToBatchAllotmentForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Batch Allotment
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateStudentAllottedForm()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-person-plus"></i> Student  Allotment Form
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateAllBatch()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-list"></i> All Batch
+        </a>
+      </li>
+      <li class="nav-item" (click)="navigateStudentAllotted()">
+        <a class="nav-link link-dark">
+          <i class="bi bi-list-check"></i> Student Allotted
+        </a>
+      </li>
+    </div>
+  </ul>
+  <hr />
+</div>

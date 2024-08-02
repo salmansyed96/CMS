@@ -1,0 +1,31 @@
+.glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .card-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  .form-label {
+    color: #fff;
+  }
+  
+  .btn-primary {
+    background-color: #1a2b39;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0f1c28;
+  }
+  

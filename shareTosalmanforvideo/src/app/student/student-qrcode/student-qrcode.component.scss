@@ -1,0 +1,13 @@
+.btn-primary {
+    background-color: #fff;
+    color: #1a2b39;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .btn-primary:hover {
+    background-color: #1a2b39;
+    color: #fff;
+  }

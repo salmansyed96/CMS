@@ -1,0 +1,70 @@
+
+   <div class="card glass-card text-center mt-5" style="margin-left: auto; margin-right: auto;">
+    <div class="d-flex justify-content-between p-3">
+      <button class="btn btn-back" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <button class="btn btn-edit" (click)="edit(data.teacherId)">
+        <i class="fas fa-edit"></i> Edit
+      </button>
+    </div>
+    <div *ngIf="data; else noData" class="card-body">
+      <h5 class="card-title text-white">{{data?.firstName || 'N/A'}} {{data?.lastName || 'N/A'}}</h5>
+      <div class="card-text mt-5">
+        <i class="fas fa-id-badge"></i> <strong>Teacher ID:</strong> {{data?.teacherId || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-mobile-alt"></i> <strong>Mobile:</strong> {{data?.mobileNumber || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-envelope"></i> <strong>Email:</strong> {{data?.email || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-birthday-cake"></i> <strong>Date of Birth:</strong> {{data?.dob ? (data.dob | date: 'longDate') : 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> {{data?.address || 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-user-check"></i> <strong>Status:</strong> <span class="status-text">{{data?.deleted ? 'Inactive' : 'Active'}}</span>
+      </div>
+    </div>
+    <ng-template #noData>
+      <p class="text-white">No data available for the specified ID.</p>
+    </ng-template>
+  </div>
+  
+
+<!-- 
+   <div class="card glass-card text-center mt-5" style="margin-left: auto; margin-right: auto;">
+    <div class="d-flex justify-content-right">
+        <button>Edit</button>
+
+    </div>
+    <div *ngIf="data; else noData" class="card-body">
+
+      <h5 class="card-title text-white">{{data?.firstName || 'N/A'}} {{data?.lastName || 'N/A'}}</h5>
+      <div class="card-text mt-5">
+        <i class="fas fa-id-badge"></i> <strong>Teacher ID:</strong> {{data?.teacherId || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-mobile-alt"></i> <strong>Mobile:</strong> {{data?.mobileNumber || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-envelope"></i> <strong>Email:</strong> {{data?.email || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-birthday-cake"></i> <strong>Date of Birth:</strong> {{data?.dob ? (data.dob | date: 'longDate') : 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> {{data?.address || 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-user-check"></i> <strong>Status:</strong> <span class="status-text">{{data?.deleted ? 'Inactive' : 'Active'}}</span>
+      </div>
+    </div>
+    <ng-template #noData>
+      <p>No data available for the specified ID.</p>
+    </ng-template>
+  </div> -->
+  

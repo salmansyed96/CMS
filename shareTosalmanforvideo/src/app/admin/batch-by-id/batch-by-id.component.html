@@ -1,0 +1,44 @@
+<div class="card glass-card text-center mt-5" style="margin-left: auto; margin-right: auto;">
+    <div class="d-flex justify-content-between p-3">
+      <button class="btn btn-back" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <button class="btn btn-edit" (click)="edit(data.id)">
+        <i class="fas fa-edit"></i> Edit
+      </button>
+    </div>
+    <div *ngIf="data; else noData" class="card-body">
+      <h5 class="card-title text-white">{{data?.subject?.courseName || 'N/A'}}</h5>
+      <div class="card-text mt-5">
+        <i class="fas fa-id-badge"></i> <strong>Teacher ID:</strong> {{data?.teacher?.teacherId || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-user"></i> <strong>Teacher Name:</strong> {{data?.teacher?.firstName}} {{data?.teacher?.lastName}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-mobile-alt"></i> <strong>Mobile:</strong> {{data?.teacher?.mobileNumber || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-envelope"></i> <strong>Email:</strong> {{data?.teacher?.email || 'N/A'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-birthday-cake"></i> <strong>Date of Birth:</strong> {{data?.teacher?.dob ? (data.teacher.dob | date: 'longDate') : 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> {{data?.teacher?.address || 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-calendar-alt"></i> <strong>Start Date:</strong> {{data?.startDate ? (data.startDate | date: 'longDate') : 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-calendar-alt"></i> <strong>End Date:</strong> {{data?.endDate ? (data.endDate | date: 'longDate') : 'Not Provided'}}
+      </div>
+      <div class="card-text">
+        <i class="fas fa-user-check"></i> <strong>Status:</strong> <span class="status-text">{{data?.teacher?.deleted ? 'Inactive' : 'Active'}}</span>
+      </div>
+    </div>
+    <ng-template #noData>
+      <p class="text-white">No data available for the specified batch ID.</p>
+    </ng-template>
+  </div>
+  

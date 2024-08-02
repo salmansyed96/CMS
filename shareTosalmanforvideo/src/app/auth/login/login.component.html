@@ -1,0 +1,42 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100  " >
+  <div class="login-container morphism">
+    <div class="login-title">
+      <h4 style="text-align: center;" class="text-light mb-1">Welcome</h4>
+      <h2 style="text-align: center; font-weight: 500;" class="text-light">  Neural Bridge AI</h2>
+    </div>
+    <hr class="text-white">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group" style="position: relative;">
+        <label for="role" class="text-light mb-1"  style="font-weight: 100; font-size: 15px;">Role</label>
+        <div class="input-group ">
+          <select class="form-control border-primary" id="role" formControlName="role" >
+            <option value="" disabled>Select a role</option>
+            <option value="ROLE_TEACHER">Teacher</option>
+            <option value="ROLE_STUDENT">Student</option>
+            <option value="ROLE_ADMIN">Admin</option>
+          </select>
+          <div class="input-group-append" style="position: absolute; left:298px; top: 4px;">
+            <span class="input-group-text">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group mt-3">
+        <label for="employeeID " class="text-light" style="font-weight: 100; font-size: 15px;">Username</label>
+        <input type="text" class="  form-control  " id="employeeID" formControlName="employeeID" placeholder="Username">
+      </div>
+      <div class="form-group mt-3">
+        <label for="password" class="text-light" style="font-weight: 100; font-size: 15px; " >Password</label>
+        <input type="password" class=" form-control" id="password" formControlName="password" placeholder="Password">
+      </div>
+      
+     
+      <button type="submit" class="btn btn-primary btn-block w-100 text-white  morphismButton"> Sign in</button>
+      <div class="text-center mt-3">
+        <a  class="text-light "  (click)="navigatetoforgetpass()">Forgot password?</a> <span class="text-light "> | </span>  <a href="#" class="text-light" routerLink="/auth/register">Register</a>
+      </div>
+    </form>
+  </div>
+</div>

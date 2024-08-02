@@ -1,0 +1,218 @@
+<!-- <div class="container mt-5">
+  <div class="card mx-auto morphism" style="max-width: 30rem">
+    <div class="card-body">
+      <h5 class="card-title text-center">Student Registration Form</h5>
+      <hr style="height: 2px; background-color: #000; border: none" />
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            class="form-control"
+            formControlName="fullName"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('fullName')?.touched &&
+              registrationForm.get('fullName')?.invalid
+            "
+            class="text-danger"
+          >
+            Full Name is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="dob" class="form-label" >Date of Birth</label>
+          <input
+            type="date"
+            id="dob"
+            class="form-control"
+            formControlName="dob"
+            [max]="formattedDate"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('dob')?.touched &&
+              registrationForm.get('dob')?.invalid
+            "
+            class="text-danger"
+          >
+            Date of Birth is required and age must be at least 15 years
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            (change)="verifyEmail(email)"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('email')?.touched &&
+              registrationForm.get('email')?.invalid
+            "
+            class="text-danger"
+          >
+            Valid Email is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="mobileNo" class="form-label">Mobile Number</label>
+          <input
+            type="text"
+            id="mobileNo"
+            class="form-control"
+            formControlName="mobileNo"
+            maxlength="10"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('mobileNo')?.touched &&
+              registrationForm.get('mobileNo')?.invalid
+            "
+            class="text-danger"
+          >
+            Mobile Number must be 10 digits
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="adharNo" class="form-label">Aadhaar Number</label>
+          <input
+            type="text"
+            id="adharNo"
+            class="form-control"
+            formControlName="adharNo"
+            maxlength="12"
+            (change)="verifyAdhar(adharNo)"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('adharNo')?.touched &&
+              registrationForm.get('adharNo')?.invalid
+            "
+            class="text-danger"
+          >
+            Aadhaar Number must be 12 digits
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<div class="loader" *ngIf="isLoading"></div> <!-- Loader element -->
+
+<div class="container mt-5">
+  <div class="card mx-auto morphism" style="max-width: 30rem">
+    <div class="card-body">
+      <h5 class="card-title text-center">Student Registration Form</h5>
+      <hr style="height: 2px; background-color: #000; border: none" />
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            class="form-control"
+            formControlName="fullName"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('fullName')?.touched &&
+              registrationForm.get('fullName')?.invalid
+            "
+            class="text-danger"
+          >
+            Full Name is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input
+            type="date"
+            id="dob"
+            class="form-control"
+            formControlName="dob"
+            [max]="formattedDate"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('dob')?.touched &&
+              registrationForm.get('dob')?.invalid
+            "
+            class="text-danger"
+          >
+            Date of Birth is required and age must be at least 15 years
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            (change)="verifyEmail(email)"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('email')?.touched &&
+              registrationForm.get('email')?.invalid
+            "
+            class="text-danger"
+          >
+            Valid Email is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="mobileNo" class="form-label">Mobile Number</label>
+          <input
+            type="text"
+            id="mobileNo"
+            class="form-control"
+            formControlName="mobileNo"
+            maxlength="10"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('mobileNo')?.touched &&
+              registrationForm.get('mobileNo')?.invalid
+            "
+            class="text-danger"
+          >
+            Mobile Number must be 10 digits
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="adharNo" class="form-label">Aadhaar Number</label>
+          <input
+            type="text"
+            id="adharNo"
+            class="form-control"
+            formControlName="adharNo"
+            maxlength="12"
+            (change)="verifyAdhar(adharNo)"
+          />
+          <div
+            *ngIf="
+              registrationForm.get('adharNo')?.touched &&
+              registrationForm.get('adharNo')?.invalid
+            "
+            class="text-danger"
+          >
+            Aadhaar Number must be 12 digits
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+

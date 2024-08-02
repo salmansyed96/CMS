@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="card glass-card mx-auto">
+      <div class="card-body">
+        <h5 class="card-title text-center">Update Batch Allotment</h5>
+        <hr style="height: 2px; background-color: #000; border: none" />
+        <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <select id="subject" class="form-select" formControlName="subject">
+              <option value="">Select a subject</option>
+              <option *ngFor="let subject of subjects" [value]="subject.id">
+                {{ subject.id }} - {{ subject.courseName }}
+              </option>
+            </select>
+            <div *ngIf="batchForm.get('subject')?.touched && batchForm.get('subject')?.invalid" class="text-danger">
+              Subject is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="teacher" class="form-label">Teacher</label>
+            <select id="teacher" class="form-select" formControlName="teacher">
+              <option value="">Select a teacher</option>
+              <option *ngFor="let teacher of teachers" [value]="teacher.id">
+                {{ teacher.id }} - {{ teacher.firstName }} {{ teacher.lastName }}
+              </option>
+            </select>
+            <div *ngIf="batchForm.get('teacher')?.touched && batchForm.get('teacher')?.invalid" class="text-danger">
+              Teacher is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input type="date" id="startDate" class="form-control" formControlName="startDate">
+            <div *ngIf="batchForm.get('startDate')?.touched && batchForm.get('startDate')?.invalid" class="text-danger">
+              Start Date is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="endDate" class="form-label">End Date</label>
+            <input type="date" id="endDate" class="form-control" formControlName="endDate">
+            <div *ngIf="batchForm.get('endDate')?.touched && batchForm.get('endDate')?.invalid" class="text-danger">
+              End Date is required
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

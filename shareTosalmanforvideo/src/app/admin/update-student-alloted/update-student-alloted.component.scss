@@ -1,0 +1,90 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 15px;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    text-align: left;
+  }
+  
+  .card-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .form-label {
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .form-select, .form-control {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+    // color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+  
+  .form-select:focus, .form-control:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+    outline: none;
+  }
+  
+  .btn-primary {
+    background-color: #1a2b39;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0f1c28;
+  }
+  
+  .text-danger {
+    color: #ff6b6b;
+    font-size: 0.875em;
+    margin-top: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    .glass-card {
+      padding: 15px;
+      margin: 10px auto;
+    }
+  
+    .card-title {
+      font-size: 1.2em;
+    }
+  
+    .form-label, .form-select, .form-control, .btn-primary {
+      font-size: 0.9em;
+    }
+  
+    .form-select, .form-control {
+      padding: 8px;
+    }
+  
+    .btn-primary {
+      padding: 8px;
+    }
+  }
+  

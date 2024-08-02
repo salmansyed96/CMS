@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="card glass-card mx-auto">
+      <div class="card-body">
+        <h5 class="card-title text-center">Update Student Allotment</h5>
+        <hr style="height: 2px; background-color: #000; border: none" />
+        <form [formGroup]="studentAllotmentForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="batchAllotment" class="form-label">Batch Allotment</label>
+            <select id="batchAllotment" class="form-select" formControlName="batchAllotment">
+              <option value="">Select a batch allotment</option>
+              <option *ngFor="let batch of batchAllotments" [value]="batch.id">
+                {{ batch?.id }} - {{ batch?.subject?.courseName }}
+              </option>
+            </select>
+            <div *ngIf="studentAllotmentForm.get('batchAllotment')?.touched && studentAllotmentForm.get('batchAllotment')?.invalid" class="text-danger">
+              Batch Allotment is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="student" class="form-label">Student</label>
+            <select id="student" class="form-select" formControlName="student">
+              <option value="">Select a student</option>
+              <option *ngFor="let student of students" [value]="student.id">
+                {{ student?.id }} - {{ student?.fullName }}
+              </option>
+            </select>
+            <div *ngIf="studentAllotmentForm.get('student')?.touched && studentAllotmentForm.get('student')?.invalid" class="text-danger">
+              Student is required
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

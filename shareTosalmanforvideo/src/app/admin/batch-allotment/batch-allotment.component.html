@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <div class="card" style="width: 30rem; margin: auto">
+    <div class="card-body">
+      <h5 class="card-title text-center">Batch Allotment</h5>
+      <hr style="height: 2px; background-color: #000; border: none" />
+      <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="subject" class="form-label">Subject</label>
+          <select id="subject" class="form-select" formControlName="subject">
+            <option value="">Select a subject</option>
+            <option *ngFor="let subject of subjects" [value]="subject.id">
+              {{ subject.id }} {{ subject.courseName }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              scheduleForm.get('subject')?.touched &&
+              scheduleForm.get('subject')?.invalid
+            "
+            class="text-danger"
+          >
+            Subject is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="teacher" class="form-label">Teacher</label>
+          <select id="teacher" class="form-select" formControlName="teacher">
+            <option value="">Select a teacher</option>
+            <option *ngFor="let teacher of teachers" [value]="teacher.id">
+              {{ teacher.id }} {{ teacher.firstName }} {{ teacher.lastName }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              scheduleForm.get('teacher')?.touched &&
+              scheduleForm.get('teacher')?.invalid
+            "
+            class="text-danger"
+          >
+            Teacher is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="startDate" class="form-label">Start Date</label>
+          <input
+            type="date"
+            id="startDate"
+            [min]="formattedDate"
+            class="form-control"
+            formControlName="startDate"
+          />
+          <div
+            *ngIf="
+              scheduleForm.get('startDate')?.touched &&
+              scheduleForm.get('startDate')?.invalid
+            "
+            class="text-danger"
+          >
+            Start Date is required
+          </div>
+        </div>
+
+        <h1>
+          <!-- {{formatedDate}} -->
+        </h1>
+        <div class="mb-3">
+          <label for="endDate" class="form-label">End Date</label>
+          <input
+            type="date"
+            id="endDate"
+            class="form-control"
+            formControlName="endDate"
+          />
+          <div
+            *ngIf="
+              scheduleForm.get('endDate')?.touched &&
+              scheduleForm.get('endDate')?.invalid
+            "
+            class="text-danger"
+          >
+            End Date is required
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

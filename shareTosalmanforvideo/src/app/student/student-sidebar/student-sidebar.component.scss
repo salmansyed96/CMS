@@ -1,0 +1,55 @@
+.glass {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+.d-flex {
+  box-shadow: 2px 2px 14px 0px #000000;
+  border-radius: 20px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-right: 50px;
+  height: 800px; /* Take full height of the viewport */
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+  margin-right: 10px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  color: #ffffff  !important;
+}
+
+.nav-link:hover {
+  background-color: #1b2a39;
+}
+
+@media (max-width: 768px) {
+  .d-flex {
+    flex-direction: column;
+    align-items: start;
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .nav-pills {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+  }
+}
